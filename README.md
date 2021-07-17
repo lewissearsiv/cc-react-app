@@ -1,6 +1,6 @@
 # Introduction
 
-This is my first attempt at deploying a very simple React app for some exposure to the process and to practice some Javascript. You can run the app on your local machine [here](https://lewissearsiv.github.io/cc-react-app/). I also will in the future attempt to put the app in a docker container for some practice.
+This is my first attempt at deploying a very simple React app for some exposure to the process and to practice some Javascript. The app allows you to track credit card spending by inputting purchases in a ledger with the ability to delete purchases if you make a mistake. There is currently no state to save information. You can run the app on your local machine [here](https://lewissearsiv.github.io/cc-react-app/). I also will in the future attempt to put the app in a docker container for some practice.
 
 All of the information below is just standard instructions for a *create-react-app* repository.
 
