@@ -2,6 +2,10 @@
 
 This is my first attempt at deploying a very simple React app for some exposure to the process and to practice some Javascript. You can run the app on your local machine [here](https://lewissearsiv.github.io/cc-react-app/). I also will in the future attempt to put the app in a docker container for some practice.
 
+All of the information below is just standard instructions for a *create-react-app* repository.
+
+---
+
 
 # Getting Started with Create React App
 
