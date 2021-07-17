@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './App.css';
-import './container_css.scss';
+
 
 
 class App extends Component {
@@ -72,16 +72,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
+        
         <div id='Header and inputs'>
           <header className='App-header'>
-            <h1 className='App-title'>
-              Lew's Big Bad Balance Tracker
-            </h1>
+            <h1 className='App-title'>Lew's Balance Tracker</h1>
           </header>
+          <div align='center'>
+            <h1 className='App-sub_header'>
+                Track your spending better with no pending transactions.<br/>
+                We'll keep a second legder for you using React.js!
+            </h1>
+          </div>
           <br/>
           <div id='inputs'>
-            Input:&nbsp;&nbsp;&nbsp;&nbsp;
+            Input Transaction:&nbsp;&nbsp;&nbsp;&nbsp;
             <input
               type="text"
               placeholder="Description"
@@ -95,68 +99,79 @@ class App extends Component {
               onChange={e => this.update_attribute("price_input", e.target.value)}
             />
             <button onClick={() => this.update_dataframe()}>
-              Add Transaction
+              Add to Ledger
             </button>
             <br/>
             <hr size="3" width="100%" color="black"></hr>  
           </div>
         </div>
         
-        <div id='Summary Stats' class="table-container" role="table" aria-label="Destinations">
-          <div class="flex-table header" role="rowgroup">
-            <div class="flex-row" role="columnheader">Number of Charges</div>
-            <div class="flex-row" role="columnheader">Total Balance</div>
-          </div>
-          <div class="flex-table row" role="rowgroup">
-            <div class="flex-row" role="columnheader">{this.state.data_array.length}</div>
-            <div class="flex-row" role="columnheader">
-              {
-                this.state.data_array.reduce((a,v) =>  a = a + v.price_val , 0 ).toLocaleString(
-                  'en-US',
-                  {
-                    style: 'currency',
-                    currency: 'USD'
-                  }
-                )
-              }
-            </div>
-          </div>
-        </div>
+        <div id="Ledger Table">
+          <table>
+            <thead>
+              <tr>
+                <td>Date</td>
+                <td>Time Stamp</td>
+                <td>Description</td>
+                <td>Amount</td>
+              </tr>
+            </thead>
 
-        <div id='Ledger' class="table-container" role="table" aria-label="Destinations">
-          <div class="flex-table header" role="rowgroup">
-            <div class="flex-row" role="columnheader">Date</div>
-            <div class="flex-row" role="columnheader">Time Stamp</div>
-            <div class="flex-row" role="columnheader">Description</div>
-            <div class="flex-row" role="columnheader">Amount</div>
-            <div class="flex-row" role="columnheader">Delete</div>
-          </div>
-          <div>{this.state.data_array.map(
-            item => {
-              return(
-                <div class="flex-table row" role="rowgroup">
-                  <div class="flex-row" role="cell">{item.input_date}</div>
-                  <div class="flex-row" role="cell">{item.input_time}</div>
-                  <div class="flex-row" role="cell">{item.description_val}</div>
-                  <div class="flex-row" role="cell">{
-                    item.price_val.toLocaleString(
-                      'en-US',
-                      {style: 'currency',currency: 'USD'}
-                      )
-                    }</div>
-                  <div class="flex-row" role="columnheader">
+            <tbody>{this.state.data_array.map(
+              item => {
+                return(
+                  <tr>
+                    <td>{item.input_date}</td>
+                    <td>{item.input_time}</td>
+                    <td>{item.description_val}</td>
+                    <td>{
+                      item.price_val.toLocaleString(
+                        'en-US',
+                        {style: 'currency',currency: 'USD'}
+                        )
+                      }
+                    </td>
                     <button
                       onClick={() => this.delete_row(item.id)}
                     >
                       Delete
-                    </button></div>
-                </div>
-            )})}
-          </div>
-        </div>       
-
+                    </button>
+                  </tr>
+              )})}
+            </tbody>
+          </table>
+        </div>        
+        
+        <div id="Total Stats">
+          <table id='Total Stats'>
+            <thead>
+              <tr>
+                <td>Number of Purchases</td>
+                <td>Total Balance</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{this.state.data_array.length}</td>
+                <td>
+                  {
+                    this.state.data_array.reduce((a,v) =>  a = a + v.price_val , 0 ).toLocaleString(
+                      'en-US',
+                      {
+                        style: 'currency',
+                        currency: 'USD'
+                      }
+                    )
+                  }
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
       </div>
     )
   }
 }
+
 export default App;
