@@ -76,7 +76,7 @@ class App extends Component {
         <div id='Header and inputs'>
           <header className='App-header'>
             <h1 className='App-title'>
-              Credit Card Balance Tracker
+              Lew's Big Bad Balance Tracker
             </h1>
           </header>
           <br/>
